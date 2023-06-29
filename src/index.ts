@@ -39,7 +39,7 @@ app.get('/items',  (req: Request, res: Response) => {
 app.get('/users/:id',  (req: Request, res: Response) => {
     let user = users.find(u => u.id === +req.params.id)
     if (user) res.send(user)
-    else res.send(404)
+    else res.sendStatus(404)
 })
 app.post('/users',  (req: Request, res: Response) => {
     const newUser = {
@@ -68,13 +68,13 @@ app.delete('/users/:id',  (req: Request, res: Response) => {
             return
         }
     }
-    else res.send(404)
+    else res.sendStatus(404)
 })
 
 app.get('/items/:id',  (req: Request, res: Response) => {
     let item = items.find(i => i.id === +req.params.id)
     if (item) res.send(item)
-    else res.send(404)
+    else res.sendStatus(404)
 })
 
 
