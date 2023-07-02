@@ -1,4 +1,10 @@
-import {Router} from "express";
+import {Router, Request, Response} from "express";
+import bodyParser from 'body-parser';
+
+export const itemsRouter = Router()
+
+itemsRouter.use(bodyParser.urlencoded({ extended: true }));
+itemsRouter.use(bodyParser.json());
 
 const items = [
     {id: 1, title: 'computer', price: 19499},
@@ -6,7 +12,6 @@ const items = [
     {id: 3, title: 'headphones', price: 1999},
 ]
 
-export const itemsRouter = Router()
 
 itemsRouter.get('/',  (req: Request, res: Response) => {
     res.send(items)

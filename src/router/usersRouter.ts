@@ -1,4 +1,10 @@
-import {Router} from "express";
+import {Router, Request, Response} from "express";
+import bodyParser from 'body-parser';
+
+export const usersRouter = Router()
+
+usersRouter.use(bodyParser.urlencoded({ extended: true }));
+usersRouter.use(bodyParser.json());
 
 const users = [
     {id: 1, name: 'Andriy', age: 29},
@@ -8,11 +14,9 @@ const users = [
     {id: 5, name: 'Ivan', age: 29}
 ]
 
-export const usersRouter = Router()
 
 usersRouter.get('/',  (req: Request, res: Response) => {
-    if (req.query.age) res.send(users.filter(i => i.age === +req.query.age))
-    else res.send(users)
+    res.send(users)
 })
 usersRouter.post('/',  (req: Request, res: Response) => {
     const newUser = {
@@ -46,6 +50,6 @@ usersRouter.delete('/:id',  (req: Request, res: Response) => {
             res.send(204)
             return
         }
+        else res.sendStatus(404)
     }
-else res.sendStatus(404)
 })
