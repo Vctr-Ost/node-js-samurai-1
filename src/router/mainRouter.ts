@@ -9,6 +9,6 @@ mainRouter.use(bodyParser.json());
 
 
 mainRouter.get('/', (req: any, res: any) => {
-    let msg = 'Hi! This is my first BackEnd web application.';
+    let msg = 'My first node.js page!';
     res.send(msg)
 })
