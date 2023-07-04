@@ -18,10 +18,6 @@ app.use('/users', usersRouter)
 app.use('/items', itemsRouter)
 
 
-app.get('/a', (req: Request, res: Response) => {
-    res.send('YPAAAAAA');
-})
-
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
